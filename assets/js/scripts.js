@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-    const baseUrl = "http://127.0.0.1:8080/api/v1";
+    const baseUrl = "https://ben-more-project-backend.onrender.com/api/v1";
 
     const projectListContainer = document.getElementById('project-list-container');
     const upcomingTaskListContainer = document.getElementById('upcoming-task-list-container');
