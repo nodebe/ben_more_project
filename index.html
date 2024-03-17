@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./dist/output.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/scripts.js"></script>
+    <title>Ben More UI</title>
+</head>
+
+<body class="h-screen bg-white text-black font-semibold">
+    <div class=" flex w-screen h-screen">
+        <div id="sidebar" class="w-[300px] flex flex-col text-gray-500 gap-6 mt-16 px-10 py-4 duration-300">
+            <a href="">Home</a>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black bg-faint-purple px-4 py-3 rounded-md text-black hover:cursor-pointer">
+                <i class="material-symbols-outlined">
+                    home_repair_service
+                </i>Projects
+            </a>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black duration-100">
+                <i class="material-symbols-outlined">
+                    task
+                </i>My Task
+            </a>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black duration-100">
+                <i class="material-symbols-outlined">
+                    group
+                </i>Team
+            </a>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black duration-100">
+                <i class="material-symbols-outlined">
+                    file_copy
+                </i>Files
+            </a>
+            <a href="" class="flex items-center gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black duration-100">
+                <i class="material-symbols-outlined">
+                    calendar_month
+                </i>Calender
+            </a>
+
+            <div class="mt-8 flex flex-col">
+                <a href="" >Insights</a>
+                <a href="" class="mt-6 flex items-center justify-between gap-3 hover:bg-faint-purple hover:px-4 hover:py-3 hover:rounded-md hover:text-black duration-100">
+                    <i class="material-symbols-outlined">
+                        chat
+                    </i>Inbox
+                    <p class="rounded-full p-2 text-xs text-white bg-circle-orange">18</p>
+                </a>
+            </div>
+
+            <div class="fixed bottom-10 p-4 flex flex-row items-center gap-3">
+                <img src="assets/images/user-normal.png" class="w-16 h-16 rounded-full" id="project-image">
+                <a href="" class="text-xl">Profile</a>
+            </div>
+
+        </div>
+        <div class="grow pt-3 duration-300 px-4" id="content">
+            <header class="w-full">
+                <div class="flex items-center ">
+                    <div class="w-8 h-auto rounded-md border bg-neutral-200 py-2 px-6 flex justify-center mr-4 cursor-pointer">
+                        <span id="menuToggleBtn" class="material-symbols-outlined">
+                            menu
+                        </span>
+                    </div>
+    
+                    <h1 class="text-2xl w-1/6">My Projects</h1>
+                    <div class="relative w-2/3">
+                        <input type="text" class="w-full pl-10 pr-4 py-4 border rounded-full shadow-neutral-200 border-neutral-100 shadow-lg text-xs font-normal" 
+                        placeholder="Search Projects, Tasks etc...">
+                        <div class="absolute inset-y-0 right-4 flex items-center pl-3">
+                          <span class="material-symbols-outlined text-gray-400">search</span>
+                        </div>
+                      </div>
+    
+                    <div class="rounded-xl border bg-faint-black flex justify-center p-3 ml-6">
+                        <span class="material-symbols-outlined text-white">
+                            tune
+                        </span>
+                    </div>
+    
+                    <div class="border border-neutral-100 bg-slate-100 flex justify-center w-24 h-16 rounded-md p-5 ml-16 hover:cursor-pointer" onclick="create_project_modal.showModal()">
+                        <span class="material-symbols-outlined">
+                            add_circle
+                        </span>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="flex flex-row max-w-full">
+                <div class="w-3/4 flex flex-col mt-16">
+                    <div class="w-full flex flex-row justify-between">
+                        <div class="flex flex-row gap-6">
+                            <div class="w-44 h-14 hover:border-black hover:bg-faint-purple border items-center justify-center flex rounded-lg hover:cursor-pointer border-black bg-faint-purple">
+                                <i class="material-symbols-outlined">
+                                    dns
+                                </i>
+                                <span class="ml-2">List</span> 
+                            </div>
+                            <div class="w-44 h-14 hover:border-black hover:bg-faint-purple border items-center justify-center flex rounded-lg hover:cursor-pointer">
+                                <i class="material-symbols-outlined">
+                                    dns
+                                </i>
+                                <span class="ml-2">Board</span> 
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-4">
+                            <p class="text-faint-black items-center flex">
+                                Show
+                            </p>
+                            <div class="items-center flex mr-6">
+                                <select id="list-size" name="list-size" 
+                                class="w-full rounded-xl border-0 text-gray-600 shadow-sm ring-2 ring-inset 
+                                ring-gray-300 sm:max-w-xs sm:text-sm sm:leading-6 px-8 py-3 hover:cursor-pointer">
+                                <option>All</option>
+                                <option>25</option>
+                                <option>50</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <p class="text-gray-400 font-normal mt-6"><span id="resultsFound">0</span> results found</p>
+
+                    <div class="relative overflow-x-auto mt-8 px-8">
+                        <div class="flex flex-row w-full text-sm text-left text-gray-400 font-normal rounded-xl pl-16 pr-16 py-4 shadow-md shadow-neutral-200 space-x-16">
+                            <p class="w-2/5">Project name</p>
+                            <p class="w-1/5">Due in</p>
+                            <p class="w-1/5">Tasks</p>
+                            <p class="w-1/5">Status</p>
+                            <p class="w-1/5">Members</p>
+                        </div>
+                        
+                        <div class="flex flex-col gap-6 mt-16 mb-12" id="project-list-container">
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="w-1/4 flex flex-col h-screen border-l-2 pl-8 pr-8 text-faint-black">
+                    <div class="mt-16 flex flex-row justify-between">
+                        <p class="font-bold text-xl">Upcoming meeting</p>
+                        <a href="#" class="text-font-purple"> See all</a>
+                    </div>
+                    <div class="bg-meeting-green px-4 pt-5 pb-3 flex-col flex rounded-3xl mt-6 gap-4">
+                        <p class="font-bold text-lg">Meeting Name</p>
+                        <p class="text-sm font-semibold text-gray-400 pr-4">
+                            The meeting aims to identify areas for improvement and 
+                            ensure the design aligns with user needs and business goals.
+                        </p>
+                        <div class="bg-white p-4 rounded-xl pb-8">
+                            <div class="flex flex-row justify-between">
+                                <div class="flex flex-col">
+                                    <p class="font-semibold text-gray-400 text-sm">Time</p>
+                                    <p class="font-semibold text-faint-black text-sm">12:00-12:30</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p class="font-semibold text-gray-400 text-sm">Duration</p>
+                                    <p class="font-semibold text-faint-black text-sm">30 min</p>
+                                </div>
+                            </div>
+                            <p class="font-semibold text-gray-400 text-sm mt-4 mb-2">Invited members</p>
+                            <div class="flex flex-row">
+                                <img src="assets/images/profile-1.jpg" class="w-8 h-8 rounded-full" id="project-image">
+                                <img src="assets/images/profile-2.jpg" class="w-8 h-8 rounded-full -ml-2" id="project-image">
+                                <img src="assets/images/profile-1.jpg" class="w-8 h-8 rounded-full -ml-2" id="project-image">
+                                <p class="w-8 h-8 rounded-full -ml-2 bg-circle-orange text-center flex items-center justify-center font-light text-xs text-white">+3</p>
+                            </div>
+                            <div class="w-full flex justify-center px-6">
+                                <button class="w-full py-4 bg-[#6366f1] rounded-2xl mt-12 text-white text-sm">Join Meeting</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-bold text-xl mt-6">Upcoming Task</p>
+                    <div class="flex flex-col gap-6" id="upcoming-task-list-container">
+                    </div>
+                    
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+<dialog id="create_project_modal" class="modal px-6 py-4 bg-white w-fit rounded-xl" style="z-index: 10 !important;">
+    <h3 class="font-bold text-lg mb-3">Project Details</h3>
+    <form method="dialog">
+        <button class="py-1 px-2 bg-faint-gray rounded-full absolute right-2 top-2" id="closeCreateProject" onclick="create_project_modal.close()">✕</button>
+    </form>
+    <form method="post" id="createProjectForm">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-bold mb-2">Name:</label>
+          <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="due_date" class="block text-gray-700 font-bold mb-2">Due Date:</label>
+            <input type="datetime-local" id="due_date" name="due_date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-6">
+          <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
+          <textarea id="description" name="description" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+        </div>
+        <input type="text" class="hidden" value="create" id="function">
+        <input type="text" class="hidden" value="" id="project_id">
+        <div class="flex items-center justify-between">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+        </div>
+      </form>      
+</dialog>
+
+<dialog id="create_task_modal" class="modal px-6 py-4 bg-white w-fit rounded-xl" style="z-index: 10 !important;">
+    <h3 class="font-bold text-lg mb-3">Task Details</h3>
+    <form method="dialog">
+        <button class="py-1 px-2 bg-faint-gray rounded-full absolute right-2 top-2" id="closeCreateTask">✕</button>
+    </form>
+    <form method="post" id="createTaskForm">
+        <div class="mb-4">
+          <label for="task_name" class="block text-gray-700 font-bold mb-2">Name:</label>
+          <input type="text" id="task_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="task_due_date" class="block text-gray-700 font-bold mb-2">Due Date:</label>
+            <input type="datetime-local" id="task_due_date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-6">
+          <label for="task_description" class="block text-gray-700 font-bold mb-2">Description:</label>
+          <textarea id="task_description" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+        </div>
+        <input type="text" class="hidden" value="create" id="task_function">
+        <input type="text" class="hidden" value="" id="task_project_id">
+        <input type="text" class="hidden" value="" id="task_id">
+
+        <div class="flex items-center justify-between">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+        </div>
+      </form>      
+</dialog>
+  
+    <script>
+        const menuToggleBtn = document.getElementById('menuToggleBtn');
+        const menu = document.querySelector('#sidebar');
+        const content = document.querySelector('#content');
+        menuToggleBtn.addEventListener('click', () => {
+            menu.classList.toggle('translate-x-[-300px]');
+            content.classList.toggle('translate-x-[-250px]');
+            menu.classList.toggle('transalate-x-[300px]');
+        })
+    </script>
+</body>
+
+</html>
